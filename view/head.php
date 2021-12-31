@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +12,3 @@
 </head>
 
 <body>
-
-    <script src="./assets/js/script.js"></script>
-</body>
-
-</html>
