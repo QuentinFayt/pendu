@@ -1,6 +1,8 @@
 <?php
 
-namespace controller;
+namespace gamecontroller;
+
+use dictionnary\Dictionnary;
 
 class GameController
 {
@@ -8,6 +10,8 @@ class GameController
     private $difficulty = null;
     private $help = null;
     private $round = null;
+    private $word = null;
+    private $wordLength = null;
 
     public function __set(string $property, string $value)
     {
@@ -25,6 +29,12 @@ class GameController
                 $this->round = (int) $value;
                 break;
         }
+        $this->word = (new Dictionnary(DICTIONNARY))->getWord();
+        $this->wordLength = strlen($this->word);
+    }
+    public function __get(string $name)
+    {
+        return $this->$name;
     }
     public function checkConfiguration()
     {

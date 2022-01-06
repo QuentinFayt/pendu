@@ -1,9 +1,9 @@
 <?php
 
-use controller\GameController;
+use gamecontroller\GameController;
 
 if (isset($_POST["gameType"]) && isset($_POST["difficulty"]) && isset($_POST["help"])) {
-    $game = new GameController;
+    $game = new GameController(DICTIONNARY);
     $game->__set("gameType", userEntryProtection($_POST["gameType"]));
     if ($_POST["gameType"] === "duo") {
         $round = empty($_POST["round"]) ? "1" : $_POST["round"];
