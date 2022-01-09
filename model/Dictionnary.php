@@ -13,6 +13,6 @@ class Dictionnary
 
     public function getWord(): string
     {
-        return utf8_encode($this->wordList[mt_rand(0, (count($this->wordList) - 1))]);
+        return utf8_encode(strtolower($this->wordList[mt_rand(0, (count($this->wordList) - 1))]));
     }
 }
