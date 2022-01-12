@@ -17,12 +17,10 @@ if (isset($_GET["letter"]) || isset($_GET["word"])) {
     $keys = array_keys($_GET);
     $key = $keys[0];
     $userEntry = [$key => userEntryProtection($_GET["$key"])];
-    $accentLetters = ["é", "è", "ê", "ë"];
 }
 if (isset($userEntry["letter"])) {
-    if ($userEntry["letter"]) {
-    }
-    echo json_encode(["word" => $_SESSION["word"], "contains" => strpos($_SESSION["word"], $userEntry["letter"])]);
+
+    echo json_encode(["word" => $_SESSION["word"], "contains" => strpos($_SESSION["word"][0], $userEntry["letter"])]);
 }
 if (isset($userEntry["word"])) {
     echo json_encode(["word" => $_SESSION["word"] === $userEntry["word"]]);

@@ -3,6 +3,7 @@ session_start();
 require_once "../config/config.php";
 
 require_once "../model/Dictionnary.php";
+require_once "../model/SpecialCharacters.php";
 
 require_once "../controller/helper.php";
 require_once "../controller/GameController.php";
