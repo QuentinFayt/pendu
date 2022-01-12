@@ -3,18 +3,19 @@
 namespace gamecontroller;
 
 use dictionnary\Dictionnary;
+use specialCharacters\SpecialCharacters;
 
 class GameController
 {
-    private $gameType = null;
-    private $difficulty = null;
-    private $help = null;
-    private $round = null;
-    private $word = null;
-    private $wordLength = null;
-    private $separators = [" ", "-", "'"];
-    private $separatorList = null;
-    private $hiddenWord = null;
+    private $gameType;
+    private $difficulty;
+    private $help;
+    private $round;
+    private $word;
+    private $wordLength;
+    private $separators;
+    private $separatorList;
+    private $hiddenWord;
 
     public function __set(string $property, string $value)
     {
@@ -91,6 +92,7 @@ class GameController
     private function loadWord()
     {
         $tempWord = userEntryProtection((new Dictionnary(DICTIONNARY))->getWord(), ENT_COMPAT);
+        $this->separators = (new SpecialCharacters)->separators;
         $this->separatorList = $this->separator($tempWord, $this->separators);
         $this->word = explode(".", $this->separatorList["word"]);
         $this->hiddenWord = $this->writeHiddenWord($this->word, $this->separatorList);
@@ -102,5 +104,13 @@ class GameController
             $this->wordLength = strlen($this->word[0]);
         }
         $_SESSION["word"] = $this->word;
+    }
+    private function checkUserentry(array $entry)
+    {
+        if (array_keys($entry) === "word") {
+        } elseif (array_keys($entry) === "letter") {
+            switch ($entry["letter"]) {
+            }
+        }
     }
 }
